@@ -7,7 +7,7 @@ import OtherPage from "@/components/Steps/OtherPage";
 function FormsPage({ activeId }: { activeId: string }) {
   return (
     <>
-      <section className="mt-1">
+      {/* <section className="mt-1">
         {activeId === "info" && <InfoStep />}
         {activeId === "details" && <DetailsPage />}
         {activeId === "other" && <OtherPage />}
@@ -20,7 +20,7 @@ function FormsPage({ activeId }: { activeId: string }) {
         >
           Submit
         </button>
-      )}
+      )} */}
     </>
   );
 }

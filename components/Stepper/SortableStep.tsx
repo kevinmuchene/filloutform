@@ -38,8 +38,7 @@ export default function SortableStep({
       {...attributes}
       {...listeners}
       onClick={onSelect}
-      className={`relative px-6 py-2 rounded-lg cursor-pointer select-none
-                      flex items-center
+      className={`relative flex items-center justify-center w-26 h-10 px-2 rounded-lg cursor-pointer select-none
                       ${
                         isActive
                           ? "bg-blue-500 text-white"
@@ -58,9 +57,9 @@ export default function SortableStep({
           className="border-b bg-transparent focus:outline-none w-24"
         />
       ) : (
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           <div className="flex items-center">{page.icon}</div>
-          <div>{page.title}</div>
+          <p className="text-sm">{page.title}</p>
         </div>
       )}
 

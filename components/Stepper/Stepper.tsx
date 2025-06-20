@@ -51,19 +51,6 @@ export default function Stepper({
 
   return (
     <>
-      {/* <div className="md:hidden p-2">
-        <select
-          value={activeId}
-          onChange={(e) => onSelect(e.target.value)}
-          className="w-full border rounded p-1"
-        >
-          {pages.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.title}
-            </option>
-          ))}
-        </select>
-      </div> */}
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -73,9 +60,16 @@ export default function Stepper({
           items={pages.map((p) => p.id)}
           strategy={horizontalListSortingStrategy}
         >
-          <div className="flex flex-col md:flex-row items-start md:items-center sapyce-y-2 md:space-x-3 md:space-y-0 overflow-auto ">
+          <div
+            className="flex flex-col md:flex-row not-first:md:items-center
+  "
+          >
             {pages.map((p, idx) => (
-              <React.Fragment key={p.id}>
+              <div
+                key={p.id}
+                className="flex flex-col items-center md:flex-row md:items-center not-first:md:space-x-3
+            "
+              >
                 <SortableStep
                   page={p}
                   isActive={p.id === activeId}
@@ -91,9 +85,11 @@ export default function Stepper({
                 {idx < pages.length - 1 && (
                   <InsertHandle onClick={() => onAdd(idx)} />
                 )}
-              </React.Fragment>
+              </div>
             ))}
-            <AddPageButton onClick={() => onAdd(pages.length - 1)} />
+            <div className="flex flex-col items-center mt-4 md:mt-0 md:ml-3">
+              <AddPageButton onClick={() => onAdd(pages.length - 1)} />
+            </div>
           </div>
           {menu && (
             <ul
