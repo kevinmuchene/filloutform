@@ -11,11 +11,11 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import React, { useState, useEffect } from "react";
-import MenuItem from "../MenuItem";
 import InsertHandle from "./InsertHandle";
 import AddPageButton from "./AddPageButton";
 import SortableStep from "./SortableStep";
 import { StepperProps, ContextMenuState } from "./utils/types";
+import StepperContextMenu from "./StepperContextMenu";
 
 export default function Stepper({
   pages,
@@ -23,9 +23,6 @@ export default function Stepper({
   onReorder,
   onAdd,
   onSelect,
-  onDelete,
-  onDuplicate,
-  onRename,
 }: StepperProps) {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
@@ -50,79 +47,47 @@ export default function Stepper({
   }
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <SortableContext
-        items={pages.map((p) => p.id)}
-        strategy={horizontalListSortingStrategy}
+    <>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
       >
-        <div className="flex items-center space-x-3">
-          {pages.map((p, idx) => (
-            <React.Fragment key={p.id}>
-              <SortableStep
-                page={p}
-                isActive={p.id === activeId}
-                onSelect={() => onSelect(p.id)}
-                onDelete={() => onDelete(p.id)}
-                onDuplicate={() => onDuplicate(p.id)}
-                onRename={(title) => onRename(p.id, title)}
-                onOpenMenu={(e) =>
-                  setMenu({ id: p.id, x: e.clientX, y: e.clientY })
-                }
-              />
-
-              {idx < pages.length - 1 && (
-                <InsertHandle onClick={() => onAdd(idx)} />
-              )}
-            </React.Fragment>
-          ))}
-          <AddPageButton onClick={() => onAdd(pages.length - 1)} />
-        </div>
-        {menu && (
-          <ul
-            style={{ top: menu.y, left: menu.x }}
-            className="fixed z-50 w-48 rounded-md border border-gray-200
-                       bg-white shadow-lg p-1 text-sm select-none"
-            onClick={(e) => e.stopPropagation()}
+        <SortableContext
+          items={pages.map((p) => p.id)}
+          strategy={horizontalListSortingStrategy}
+        >
+          <div
+            className="flex flex-col md:flex-row not-first:md:items-center
+  "
           >
-            <MenuItem
-              label="Set as first page"
-              onClick={() => {
-                alert("Set as first page clicked");
-              }}
-            />
-            <MenuItem
-              label="Rename"
-              onClick={() => {
-                alert("Rename clicked");
-              }}
-            />
-            <MenuItem
-              label="Copy"
-              onClick={() => {
-                alert("Copy clicked");
-              }}
-            />
-            <MenuItem
-              label="Duplicate"
-              onClick={() => {
-                alert("Duplicate clicked");
-              }}
-            />
-            <div className="my-1 h-px bg-gray-100" />
-            <MenuItem
-              label="Delete"
-              danger
-              onClick={() => {
-                alert("Delete clicked");
-              }}
-            />
-          </ul>
-        )}
-      </SortableContext>
-    </DndContext>
+            {pages.map((p, idx) => (
+              <div
+                key={p.id}
+                className="flex flex-col items-center md:flex-row md:items-center not-first:md:space-x-3
+            "
+              >
+                <SortableStep
+                  page={p}
+                  isActive={p.id === activeId}
+                  onSelect={() => onSelect(p.id)}
+                  onOpenMenu={(e) =>
+                    setMenu({ id: p.id, x: e.clientX, y: e.clientY })
+                  }
+                />
+
+                {idx < pages.length - 1 && (
+                  <InsertHandle onClick={() => onAdd(idx)} />
+                )}
+              </div>
+            ))}
+            <div className="flex flex-col items-center mt-4 md:mt-0 md:ml-3">
+              <AddPageButton onClick={() => onAdd(pages.length - 1)} />
+            </div>
+          </div>
+          <StepperContextMenu menu={menu} setMenu={setMenu} />
+        </SortableContext>
+      </DndContext>
+    </>
   );
 }
