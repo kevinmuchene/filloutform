@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { Page } from "./utils/types";
 import { CSS } from "@dnd-kit/utilities";
+import { CiMenuKebab } from "react-icons/ci";
 
 export default function SortableStep({
   page,
@@ -63,15 +64,17 @@ export default function SortableStep({
         </div>
       )}
 
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onOpenMenu(e);
-        }}
-        className="absolute right-1 text-xl opacity-0 hover:opacity-100 cursor-pointer"
-      >
-        ⋮
-      </button>
+      {isActive && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenMenu(e);
+          }}
+          className="absolute right-1 text-xl opacity-0 hover:opacity-100 cursor-pointer"
+        >
+          <CiMenuKebab />
+        </button>
+      )}
     </div>
   );
 }
