@@ -1,5 +1,5 @@
 import MenuItem from "../Menu/MenuItem";
-import { menuItems } from "../Menu/menuItems";
+import { stepperMenuItems } from "../Menu/menuItems";
 import { StepperContextMenuProps } from "./utils/types";
 
 export default function StepperContextMenu({
@@ -15,7 +15,7 @@ export default function StepperContextMenu({
                    bg-white shadow-lg p-1 text-sm select-none"
         onClick={(e) => e.stopPropagation()}
       >
-        {menuItems.map((item) =>
+        {stepperMenuItems.map((item) =>
           item.divider ? (
             <li key={item.key}>
               <div className="my-1 h-px bg-gray-100" />

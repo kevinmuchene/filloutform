@@ -1,11 +1,5 @@
 import React from "react";
-
-type MenuItemProps = {
-  label?: string;
-  onClick: () => void;
-  icon?: React.ReactNode;
-  danger?: boolean;
-};
+import { MenuItemProps } from "./utils/types";
 
 function MenuItem({ label, onClick, icon, danger = false }: MenuItemProps) {
   return (

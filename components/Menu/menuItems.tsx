@@ -4,7 +4,7 @@ import { FaRegCopy } from "react-icons/fa";
 import { HiOutlineDuplicate } from "react-icons/hi";
 import { MenuItemsDef } from "../Stepper/utils/types";
 
-export const menuItems: MenuItemsDef[] = [
+export const stepperMenuItems: MenuItemsDef[] = [
   {
     key: "first",
     label: "Set as first page",
