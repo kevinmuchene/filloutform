@@ -1,6 +1,6 @@
-import MenuItem from "../Menu/MenuItem";
-import { stepperMenuItems } from "../Menu/menuItems";
-import { StepperContextMenuProps } from "./utils/types";
+import MenuItem from "../../Menu/components/MenuItem";
+import { stepperMenuItems } from "../../Menu/components/menuItems";
+import { StepperContextMenuProps } from "../types";
 
 export default function StepperContextMenu({
   menu,

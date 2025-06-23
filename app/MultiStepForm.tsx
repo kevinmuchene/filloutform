@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import Stepper from "../components/Stepper/Stepper";
-import StepContent from "@/components/Steps/StepContent";
+import Stepper from "../features/Stepper/components/Stepper";
+import StepContent from "@/features/StepsContent/pages/StepContent";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaRegNewspaper } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
 import { MdDone } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
-import { Page } from "@/components/Stepper/utils/types";
+import { Page } from "@/features/Stepper/types";
 
 export default function MultiStepForm() {
   const [pages, setPages] = useState<Page[]>([
@@ -18,6 +18,19 @@ export default function MultiStepForm() {
   ]);
   const [activeId, setActiveId] = useState(pages[0].id);
 
+  function handleAdd(index: number) {
+    const next = [...pages];
+    const endingIdx = next.findIndex((p) => p.id === "ending");
+    const insertAt = index >= pages.length - 1 ? endingIdx : index + 1;
+
+    next.splice(insertAt, 0, {
+      id: `page-${Date.now()}`,
+      title: "New Page",
+      icon: <FaPlus />,
+    });
+    setPages(next);
+  }
+
   return (
     <div className="flex flex-col gap-12 mt-6">
       <div>
@@ -25,15 +38,7 @@ export default function MultiStepForm() {
           pages={pages}
           activeId={activeId}
           onReorder={setPages}
-          onAdd={(index) => {
-            const next = [...pages];
-            next.splice(index + 1, 0, {
-              id: `page-${Date.now()}`,
-              title: "New Page",
-              icon: <FaPlus />,
-            });
-            setPages(next);
-          }}
+          onAdd={handleAdd}
           onSelect={setActiveId}
         />
       </div>

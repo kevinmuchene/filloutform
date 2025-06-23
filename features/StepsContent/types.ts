@@ -1,4 +1,4 @@
-import { Page } from "@/components/Stepper/utils/types";
+import { Page } from "@/features/Stepper/types";
 
 export type StepContentProps = {
   activeId: string;

@@ -14,7 +14,7 @@ import React, { useState, useEffect } from "react";
 import InsertHandle from "./InsertHandle";
 import AddPageButton from "./AddPageButton";
 import SortableStep from "./SortableStep";
-import { StepperProps, ContextMenuState } from "./utils/types";
+import { StepperProps, ContextMenuState } from "../types";
 import StepperContextMenu from "./StepperContextMenu";
 
 export default function Stepper({
@@ -39,11 +39,17 @@ export default function Stepper({
 
   function handleDragEnd(event: any) {
     const { active, over } = event;
-    if (over && active.id !== over.id) {
-      const oldIndex = pages.findIndex((p) => p.id === active.id);
-      const newIndex = pages.findIndex((p) => p.id === over.id);
-      onReorder(arrayMove(pages, oldIndex, newIndex));
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = pages.findIndex((p) => p.id === active.id);
+    let newIndex = pages.findIndex((p) => p.id === over.id);
+
+    const lastIndex = pages.length - 1;
+    if (newIndex >= lastIndex) {
+      newIndex = lastIndex - 1;
     }
+
+    onReorder(arrayMove(pages, oldIndex, newIndex));
   }
 
   return (
@@ -74,6 +80,7 @@ export default function Stepper({
                   onOpenMenu={(e) =>
                     setMenu({ id: p.id, x: e.clientX, y: e.clientY })
                   }
+                  disabled={idx === pages.length - 1}
                 />
 
                 {idx < pages.length - 1 && (

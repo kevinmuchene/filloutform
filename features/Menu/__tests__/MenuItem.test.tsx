@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import MenuItem from "@/components/Menu/MenuItem";
+import MenuItem from "@/features/Menu/components/MenuItem";
 
 describe("MenuItem component", () => {
   const label = "Test Action";

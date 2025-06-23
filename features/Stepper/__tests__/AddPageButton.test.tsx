@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import AddPageButton from "@/components/Stepper/AddPageButton";
+import AddPageButton from "@/features/Stepper/components/AddPageButton";
 
 describe("AddPageButton component", () => {
   test("renders a button with the correct text and styling", () => {

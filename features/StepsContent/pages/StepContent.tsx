@@ -1,16 +1,15 @@
 import React from "react";
-import InfoStep from "@/components/Steps/InfoStep";
-import DetailsPage from "@/components/Steps/DetailsPage";
-import EndingPage from "@/components/Steps/EndingPage";
-import OtherPage from "@/components/Steps/OtherPage";
-import { StepContentProps } from "./utils/types";
+import InfoStep from "@/features/StepsContent/pages/InfoStep";
+import DetailsPage from "@/features/StepsContent/pages/DetailsPage";
+import EndingPage from "@/features/StepsContent/pages/EndingPage";
+import OtherPage from "@/features/StepsContent/pages/OtherPage";
+import { StepContentProps } from "../types";
 
 function StepContent({ activeId, pages, onSelect }: StepContentProps) {
   const currentIdx = pages.findIndex((p) => p.id === activeId);
   const isLast = currentIdx === pages.length - 1;
   const nextPage = !isLast ? pages[currentIdx + 1] : null;
 
-  console.log(isLast);
   return (
     <>
       <section className="mt-1">

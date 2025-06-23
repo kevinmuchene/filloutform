@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import InsertHandle from "@/components/Stepper/InsertHandle";
+import InsertHandle from "@/features/Stepper/components/InsertHandle";
 import userEvent from "@testing-library/user-event";
 
 describe("InsertHandle component", () => {
