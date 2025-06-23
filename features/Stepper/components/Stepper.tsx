@@ -23,6 +23,7 @@ export default function Stepper({
   onReorder,
   onAdd,
   onSelect,
+  maxSteps,
 }: StepperProps) {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
@@ -83,13 +84,15 @@ export default function Stepper({
                   disabled={idx === pages.length - 1}
                 />
 
-                {idx < pages.length - 1 && (
+                {pages.length < maxSteps && idx < pages.length - 1 && (
                   <InsertHandle onClick={() => onAdd(idx)} />
                 )}
               </div>
             ))}
             <div className="flex flex-col items-center mt-4 md:mt-0 md:ml-3">
-              <AddPageButton onClick={() => onAdd(pages.length - 1)} />
+              {pages.length < maxSteps && (
+                <AddPageButton onClick={() => onAdd(pages.length - 1)} />
+              )}
             </div>
           </div>
           <StepperContextMenu menu={menu} setMenu={setMenu} />

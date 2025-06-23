@@ -44,3 +44,7 @@ npm run dev
 
 npm test
 ```
+
+### Customization
+
+Step Limit: Maximum of 7 steps; you can adjust MAX_STEPS in MultiStepForm page.

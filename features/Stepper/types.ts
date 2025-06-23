@@ -7,6 +7,7 @@ export interface StepperProps {
   onReorder: (newPages: Page[]) => void;
   onAdd: (afterIndex: number) => void;
   onSelect: (id: string) => void;
+  maxSteps: number;
 }
 
 export interface MenuItemsDef {

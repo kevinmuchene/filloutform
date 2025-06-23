@@ -6,8 +6,9 @@ import { CiCircleInfo } from "react-icons/ci";
 import { FaRegNewspaper } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
 import { MdDone } from "react-icons/md";
-import { FaPlus } from "react-icons/fa";
 import { Page } from "@/features/Stepper/types";
+
+const MAX_STEPS = 7;
 
 export default function MultiStepForm() {
   const [pages, setPages] = useState<Page[]>([
@@ -19,6 +20,11 @@ export default function MultiStepForm() {
   const [activeId, setActiveId] = useState(pages[0].id);
 
   function handleAdd(index: number) {
+    if (pages.length >= MAX_STEPS) {
+      alert(`You can only have up to ${MAX_STEPS} steps.`);
+      return;
+    }
+
     const next = [...pages];
     const endingIdx = next.findIndex((p) => p.id === "ending");
     const insertAt = index >= pages.length - 1 ? endingIdx : index + 1;
@@ -26,7 +32,6 @@ export default function MultiStepForm() {
     next.splice(insertAt, 0, {
       id: `page-${Date.now()}`,
       title: "New Page",
-      // icon: <FaPlus />,
     });
     setPages(next);
   }
@@ -40,6 +45,7 @@ export default function MultiStepForm() {
           onReorder={setPages}
           onAdd={handleAdd}
           onSelect={setActiveId}
+          maxSteps={MAX_STEPS}
         />
       </div>
       <div>
