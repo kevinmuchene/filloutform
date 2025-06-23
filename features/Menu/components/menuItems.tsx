@@ -2,9 +2,9 @@ import { CiFlag1 } from "react-icons/ci";
 import { MdDriveFileRenameOutline, MdDeleteOutline } from "react-icons/md";
 import { FaRegCopy } from "react-icons/fa";
 import { HiOutlineDuplicate } from "react-icons/hi";
-import { MenuItemsDef } from "../Stepper/utils/types";
+import { MenuItemsDef } from "../../Stepper/types";
 
-export const menuItems: MenuItemsDef[] = [
+export const stepperMenuItems: MenuItemsDef[] = [
   {
     key: "first",
     label: "Set as first page",
