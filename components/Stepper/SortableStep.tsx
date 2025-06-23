@@ -46,6 +46,17 @@ export default function SortableStep({
                           : "bg-gray-100 text-gray-700"
                       }`}
     >
+      {isActive && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenMenu(e);
+          }}
+          className="absolute left-1 text-xl opacity-0 hover:opacity-100 cursor-pointer"
+        >
+          <CiMenuKebab />
+        </button>
+      )}
       {editing ? (
         <input
           value={draft}
@@ -62,18 +73,6 @@ export default function SortableStep({
           <div className="flex items-center">{page.icon}</div>
           <p className="text-sm">{page.title}</p>
         </div>
-      )}
-
-      {isActive && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onOpenMenu(e);
-          }}
-          className="absolute right-1 text-xl opacity-0 hover:opacity-100 cursor-pointer"
-        >
-          <CiMenuKebab />
-        </button>
       )}
     </div>
   );

@@ -1,24 +1,28 @@
-function MenuItem({
-  label,
-  onClick,
-  danger = false,
-}: {
+import React from "react";
+
+type MenuItemProps = {
   label: string;
   onClick: () => void;
+  icon?: React.ReactNode;
   danger?: boolean;
-}) {
+};
+
+function MenuItem({ label, onClick, icon, danger = false }: MenuItemProps) {
   return (
     <li>
       <button
         onClick={onClick}
-        className={`flex w-full items-center px-3 py-1.5 rounded
-                      hover:bg-gray-100 ${
-                        danger ? "text-red-600" : "text-gray-800"
-                      }`}
+        className={`
+          flex w-full items-center px-3 py-1.5 rounded
+          hover:bg-gray-100
+          ${danger ? "text-red-600" : "text-gray-800"}
+        `}
       >
-        {label}
+        {icon && <span className="mr-2 flex-shrink-0">{icon}</span>}
+        <span>{label}</span>
       </button>
     </li>
   );
 }
+
 export default MenuItem;

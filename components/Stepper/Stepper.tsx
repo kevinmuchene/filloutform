@@ -16,6 +16,11 @@ import InsertHandle from "./InsertHandle";
 import AddPageButton from "./AddPageButton";
 import SortableStep from "./SortableStep";
 import { StepperProps, ContextMenuState } from "./utils/types";
+import { MdDeleteOutline } from "react-icons/md";
+import { CiFlag1 } from "react-icons/ci";
+import { MdDriveFileRenameOutline } from "react-icons/md";
+import { FaRegCopy } from "react-icons/fa";
+import { HiOutlineDuplicate } from "react-icons/hi";
 
 export default function Stepper({
   pages,
@@ -100,30 +105,35 @@ export default function Stepper({
             >
               <MenuItem
                 label="Set as first page"
+                icon={<CiFlag1 className="text-blue-600" />}
                 onClick={() => {
                   alert("Set as first page clicked");
                 }}
               />
               <MenuItem
                 label="Rename"
+                icon={<MdDriveFileRenameOutline className="text-gray-600" />}
                 onClick={() => {
                   alert("Rename clicked");
                 }}
               />
               <MenuItem
                 label="Copy"
+                icon={<FaRegCopy className="text-gray-600" />}
                 onClick={() => {
                   alert("Copy clicked");
                 }}
               />
               <MenuItem
                 label="Duplicate"
+                icon={<HiOutlineDuplicate className="text-gray-600" />}
                 onClick={() => {
                   alert("Duplicate clicked");
                 }}
               />
               <div className="my-1 h-px bg-gray-100" />
               <MenuItem
+                icon={<MdDeleteOutline className="text-red-600" />}
                 label="Delete"
                 danger
                 onClick={() => {
