@@ -1,4 +1,3 @@
-// AddPageButton.test.tsx
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -9,7 +8,6 @@ describe("AddPageButton component", () => {
     const handleClick = jest.fn();
     render(<AddPageButton onClick={handleClick} />);
 
-    // The button should be rendered with the text '＋Add page'
     const button = screen.getByRole("button", { name: /add page/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
@@ -21,7 +19,6 @@ describe("AddPageButton component", () => {
       "border"
     );
 
-    // It should contain a span with the exact text
     const span = screen.getByText("＋Add page");
     expect(span).toBeInTheDocument();
     expect(span.tagName).toBe("SPAN");

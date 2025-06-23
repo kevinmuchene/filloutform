@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multi-Step Form
+
+A Next.js + React + Tailwind application that provides drag-and-drop multi-step form experience with extendable steps and a flexible context menu.
+
+## Key Features
+
+- **Interactive Stepper**: Displays a sequence of steps (Info, Details, Other, Ending, plus dynamically added pages).
+- **Drag-and-Drop Reordering**: Reorder steps using `@dnd-kit` for seamless drag-and-drop support.
+- **Dynamic Page Management**:
+
+  - Add new steps between existing ones via a hover-triggered “+” handle.
+  - Rename, duplicate, or delete steps through a right-click context menu.
+
+- **Responsive Design**:
+
+  - Vertical layout on mobile, horizontal on larger screens.
+
+- **Content Rendering**:
+
+  - Built-in components (`InfoStep`, `DetailsPage`, etc.) for known steps.
+  - Fallback render for custom pages with simple paragraph content.
+
+- **Next Button Navigation**: Advance through steps with a bottom-positioned Next/Done button.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js v16+ and npm
+
+### Installation
+
+```bash
+git clone https://github.com/kevinmuchene/filloutform
+cd fillout-assessment
+npm install
+```
+
+### Running Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Open http://localhost:3000 in your browser
+
+npm test
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Stepper from "../components/Stepper/Stepper";
-import FormsPage from "@/components/Steps/StepContent";
+import StepContent from "@/components/Steps/StepContent";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaRegNewspaper } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
@@ -38,7 +38,7 @@ export default function MultiStepForm() {
         />
       </div>
       <div>
-        <FormsPage activeId={activeId} pages={pages} onSelect={setActiveId} />
+        <StepContent activeId={activeId} pages={pages} onSelect={setActiveId} />
       </div>
     </div>
   );
