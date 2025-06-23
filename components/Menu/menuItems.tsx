@@ -2,8 +2,7 @@ import { CiFlag1 } from "react-icons/ci";
 import { MdDriveFileRenameOutline, MdDeleteOutline } from "react-icons/md";
 import { FaRegCopy } from "react-icons/fa";
 import { HiOutlineDuplicate } from "react-icons/hi";
-import { MenuItemsDef } from "./types";
-
+import { MenuItemsDef } from "../Stepper/utils/types";
 
 export const menuItems: MenuItemsDef[] = [
   {

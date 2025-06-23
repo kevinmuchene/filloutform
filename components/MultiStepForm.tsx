@@ -9,7 +9,7 @@ import { MdDone } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { Page } from "@/components/Stepper/utils/types";
 
-export default function HomePage() {
+export default function MultiStepForm() {
   const [pages, setPages] = useState<Page[]>([
     { id: "info", title: "Info", icon: <CiCircleInfo /> },
     { id: "details", title: "Details", icon: <FaRegNewspaper /> },

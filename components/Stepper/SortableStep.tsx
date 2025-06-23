@@ -31,7 +31,7 @@ export default function SortableStep({
       {...attributes}
       {...listeners}
       onClick={onSelect}
-      className={`relative flex items-center justify-center w-26 h-10 px-2 rounded-lg cursor-pointer select-none
+      className={`relative flex items-center justify-center w-26 h-10 px-2 cursor-pointer select-none rounded-lg border border-gray-300
                       ${
                         isActive
                           ? "bg-blue-500 text-white"
