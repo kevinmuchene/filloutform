@@ -26,7 +26,7 @@ export default function MultiStepForm() {
     next.splice(insertAt, 0, {
       id: `page-${Date.now()}`,
       title: "New Page",
-      icon: <FaPlus />,
+      // icon: <FaPlus />,
     });
     setPages(next);
   }

@@ -1,4 +1,4 @@
-export type Page = { id: string; title: string; icon: React.ReactNode };
+export type Page = { id: string; title: string; icon?: React.ReactNode };
 export type ContextMenuState = { id: string; x: number; y: number } | null;
 
 export interface StepperProps {
