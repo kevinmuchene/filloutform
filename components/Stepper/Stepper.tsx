@@ -11,16 +11,11 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import React, { useState, useEffect } from "react";
-import MenuItem from "../MenuItem";
 import InsertHandle from "./InsertHandle";
 import AddPageButton from "./AddPageButton";
 import SortableStep from "./SortableStep";
 import { StepperProps, ContextMenuState } from "./utils/types";
-import { MdDeleteOutline } from "react-icons/md";
-import { CiFlag1 } from "react-icons/ci";
-import { MdDriveFileRenameOutline } from "react-icons/md";
-import { FaRegCopy } from "react-icons/fa";
-import { HiOutlineDuplicate } from "react-icons/hi";
+import StepperContextMenu from "./StepperContextMenu";
 
 export default function Stepper({
   pages,
@@ -28,9 +23,6 @@ export default function Stepper({
   onReorder,
   onAdd,
   onSelect,
-  onDelete,
-  onDuplicate,
-  onRename,
 }: StepperProps) {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
@@ -79,9 +71,6 @@ export default function Stepper({
                   page={p}
                   isActive={p.id === activeId}
                   onSelect={() => onSelect(p.id)}
-                  onDelete={() => onDelete(p.id)}
-                  onDuplicate={() => onDuplicate(p.id)}
-                  onRename={(title) => onRename(p.id, title)}
                   onOpenMenu={(e) =>
                     setMenu({ id: p.id, x: e.clientX, y: e.clientY })
                   }
@@ -96,52 +85,7 @@ export default function Stepper({
               <AddPageButton onClick={() => onAdd(pages.length - 1)} />
             </div>
           </div>
-          {menu && (
-            <ul
-              style={{ top: menu.y, left: menu.x }}
-              className="fixed z-50 w-48 rounded-md border border-gray-200
-                       bg-white shadow-lg p-1 text-sm select-none"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <MenuItem
-                label="Set as first page"
-                icon={<CiFlag1 className="text-blue-600" />}
-                onClick={() => {
-                  alert("Set as first page clicked");
-                }}
-              />
-              <MenuItem
-                label="Rename"
-                icon={<MdDriveFileRenameOutline className="text-gray-600" />}
-                onClick={() => {
-                  alert("Rename clicked");
-                }}
-              />
-              <MenuItem
-                label="Copy"
-                icon={<FaRegCopy className="text-gray-600" />}
-                onClick={() => {
-                  alert("Copy clicked");
-                }}
-              />
-              <MenuItem
-                label="Duplicate"
-                icon={<HiOutlineDuplicate className="text-gray-600" />}
-                onClick={() => {
-                  alert("Duplicate clicked");
-                }}
-              />
-              <div className="my-1 h-px bg-gray-100" />
-              <MenuItem
-                icon={<MdDeleteOutline className="text-red-600" />}
-                label="Delete"
-                danger
-                onClick={() => {
-                  alert("Delete clicked");
-                }}
-              />
-            </ul>
-          )}
+          <StepperContextMenu menu={menu} setMenu={setMenu} />
         </SortableContext>
       </DndContext>
     </>

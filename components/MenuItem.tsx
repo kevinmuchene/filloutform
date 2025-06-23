@@ -1,7 +1,7 @@
 import React from "react";
 
 type MenuItemProps = {
-  label: string;
+  label?: string;
   onClick: () => void;
   icon?: React.ReactNode;
   danger?: boolean;

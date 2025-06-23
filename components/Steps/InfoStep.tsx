@@ -4,7 +4,7 @@ export default function InfoStep() {
   const { register } = useForm();
   return (
     <div className="rounded-xl border-2 border-blue-500/40 bg-white p-6 shadow-lg">
-      <div>
+      <div className="my-3">
         <label
           htmlFor="name"
           className="block text-sm font-medium text-gray-700"
@@ -23,7 +23,7 @@ export default function InfoStep() {
         />
       </div>
 
-      <div>
+      <div className="my-3">
         <label
           htmlFor="email"
           className="block text-sm font-medium text-gray-700"
